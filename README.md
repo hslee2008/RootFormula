@@ -17,3 +17,11 @@ Error: 2.21911511878202278886852946991427013922490130249391709281866423345664015
 ```
 
 Here, m is the root number, x is the number, and repeat is the number of times to repeat the calculation.
+
+This results in a pretty good approximation of the root.
+
+![Graph](./assets/formula.png)
+
+To get a closer look, you can make the repeat value smaller.
+
+![Graph](./assets/formula2.png)

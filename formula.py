@@ -3,6 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+from tqdm import tqdm
 from decimal import *
 
 getcontext().prec = 999
@@ -20,7 +21,7 @@ NormYPoints = NormalRoot()
 def HyunseungRootFormula():
   sum = 0
 
-  for i in range(repeat):
+  for i in tqdm(range(repeat)):
     power = pow(np.log(x) / m ,i)
 
     sum += Decimal(power) / Decimal(math.factorial(i))
@@ -45,5 +46,4 @@ def main():
 
   graph()
 
-# main
 main()
