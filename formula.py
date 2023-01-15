@@ -12,28 +12,40 @@ x = int(input("Enter x: "))
 repeat = int(input("Enter repeat: "))
 
 def NormalRoot():
-  return (x ** (1 / m))
+  return (Decimal(x) ** (Decimal(1) / Decimal(m)))
 
 xpoints = []
 ypoints = []
+difXPoints = []
+difYPoints = []
+
 NormYPoints = NormalRoot()
 
 def HyunseungRootFormula():
   sum = 0
 
   for i in tqdm(range(repeat)):
-    power = pow(np.log(x) / m ,i)
+    power = pow(Decimal(x).ln() / m ,i)
 
     sum += Decimal(power) / Decimal(math.factorial(i))
 
     xpoints.append(i)
     ypoints.append(sum)
 
+    if (i > repeat - 10):
+      difXPoints.append(i)
+      difYPoints.append(abs(Decimal(NormYPoints) - sum))
+
   return sum
 
 def graph():
+  plt.subplot(1, 2, 1)
   plt.plot(np.array(xpoints), np.array(ypoints), color="r", label="Hyunseung Root Formula")
   plt.axhline(y=NormalRoot(), color='b', linestyle='dotted')
+
+  plt.subplot(1, 2, 2)
+  plt.plot(np.array(difXPoints), np.array(difYPoints), color="r", label="Hyunseung Root Formula Difference")
+
   plt.show()
 
 def main():
